@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-const DAYS_IN_MONTH = 30; // Set the number of days in the month here
+// const DAYS_IN_MONTH = 30; // Set the number of days in the month here
 const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -62,14 +62,22 @@ const HomeNavigation: React.FC = () => {
   
     const previousMonth = () => {
         setSelectedMonth((prevMonth) => {
-            const newMonth = prevMonth === 0 ? 12 : prevMonth - 1;
-            console.log(newMonth); // Log the new value
+            const newMonth = prevMonth === 1 ? 11 : prevMonth - 1;
+            if (newMonth === 11) {
+                onYearChange(selectedYear - 1)
+            }
             return newMonth;
         });
     };
   
     const nextMonth = () => {
-      setSelectedMonth((prevMonth) => prevMonth + 1);
+        setSelectedMonth((prevMonth) => {
+            const newMonth = prevMonth === 11 ? 0 : prevMonth + 1;
+            if (newMonth === 0) {
+                onYearChange(selectedYear + 1)
+            }
+            return newMonth;
+        });
     };
   
     const onMonthChange = (monthIndex: number) => {
@@ -93,31 +101,31 @@ const HomeNavigation: React.FC = () => {
           <Text style={styles.header} onPress={togglePickers}>
             {`${MONTHS[selectedMonth]} ${selectedYear}`}
           </Text>
-          <View style={styles.monthYearPicker}>
-          {/* Show pickers only when toggled */}
-          {showPickers && (
-            <>
-              <Picker
-                selectedValue={selectedMonth}
-                style={styles.picker}
-                onValueChange={onMonthChange}
-              >
-                {MONTHS.map((month, index) => (
-                  <Picker.Item key={index} label={month} value={index} />
-                ))}
-              </Picker>
-              <Picker
-                selectedValue={selectedYear}
-                style={styles.picker}
-                onValueChange={onYearChange}
-              >
-                {Array.from({ length: 10 }, (_, i) => selectedYear + i).map((year) => (
-                  <Picker.Item key={year} label={year.toString()} value={year} />
-                ))}
-              </Picker>
-            </>
-          )}
-        </View>
+            <View style={styles.monthYearPicker}>
+                {/* Show pickers only when toggled */}
+                {showPickers && (
+                    <>
+                        <Picker
+                            selectedValue={selectedMonth}
+                            style={styles.picker}
+                            onValueChange={onMonthChange}
+                        >
+                            {MONTHS.map((month, index) => (
+                            <Picker.Item key={index} label={month} value={index} />
+                            ))}
+                        </Picker>
+                        <Picker
+                            selectedValue={selectedYear}
+                            style={styles.picker}
+                            onValueChange={onYearChange}
+                        >
+                            {Array.from({ length: 10 }, (_, i) => selectedYear + i).map((year) => (
+                            <Picker.Item key={year} label={year.toString()} value={year} />
+                            ))}
+                        </Picker>
+                    </>
+                )}
+            </View>
           <TouchableOpacity onPress={nextMonth}>
             <Text style={styles.navigationButton}>{'Next >'}</Text>
           </TouchableOpacity>

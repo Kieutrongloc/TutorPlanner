@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome'; // You can replace with the desired icon library
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faMugSaucer } from '@fortawesome/free-solid-svg-icons/faMugSaucer'
 import { faHome, faBook, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import HomeNavigation from './components/HomeNavigation';
