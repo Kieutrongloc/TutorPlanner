@@ -4,9 +4,9 @@ import Icon from 'react-native-vector-icons/FontAwesome'; // You can replace wit
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome, faBook, faUser } from '@fortawesome/free-solid-svg-icons';
 
-import HomeNavigation from './components/HomeNavigation';
-import ProfileNavigation from './components/ProfileNavigation';
-import AuditNavigation from './components/AuditNavigation';
+import HomeNavigation from './HomeNavigation';
+import ProfileNavigation from './ProfileNavigation';
+import IncomeNavigation from './IncomeNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,9 +19,9 @@ const HomeScreen: React.FC = () => {
         component={HomeNavigation}
       />
       <Tab.Screen
-        name="Audit"
+        name="Income"
         options={{ tabBarIcon: () => <FontAwesomeIcon icon={ faBook } />   }}
-        component={AuditNavigation}
+        component={IncomeNavigation}
       />
       <Tab.Screen
         name="Profile"
