@@ -12,7 +12,7 @@ import Share from 'react-native-share';
 
 // import files from '../../assets/filesBase64';
 const ProfileScreen = () => {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
   const [isShowSignIn, setIsShowSignIn] = React.useState(false);
   const [isShowSignUp, setIsShowSignUp] = React.useState(false);
 

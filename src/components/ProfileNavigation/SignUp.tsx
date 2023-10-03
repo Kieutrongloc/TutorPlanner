@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    borderTopRightRadius: 16,
-    borderTopLeftRadius: 16,
+    // borderTopRightRadius: 16,
+    // borderTopLeftRadius: 16,
   },
   wrapper: {
     backgroundColor: '#e5e5e5',
